@@ -1,13 +1,18 @@
 import React from "react";
 import Week from "../Week";
 import TableHead from "../TableHead";
+import Head from "../Head";
+import styles from "./Month.module.sass";
 
 export default function Month(props) {
   const { monthDays, WEEK_DAYS_SHORT } = props;
   return (
-    <table>
-      <TableHead WEEK_DAYS_SHORT={WEEK_DAYS_SHORT} />
-      <Week monthDays={monthDays} />
-    </table>
+    <div className={styles.monthContainer}>
+      <Head />
+      <table>
+        <TableHead WEEK_DAYS_SHORT={WEEK_DAYS_SHORT} />
+        <Week monthDays={monthDays} />
+      </table>
+    </div>
   );
 }
