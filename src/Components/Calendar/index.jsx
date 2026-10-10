@@ -9,7 +9,6 @@ import {
   getWeek,
   startOfMonth,
   endOfMonth,
-  getMonth,
   startOfWeek,
   addDays,
   format,
