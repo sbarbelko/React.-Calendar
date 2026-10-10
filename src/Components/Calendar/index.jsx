@@ -1,7 +1,18 @@
 import CurrentDate from "../CurrentDate";
 import Month from "../Month";
 import styles from "./Calendar.module.sass";
-import { getDate, getDay, startOfMonth } from "date-fns";
+import {
+  getDate,
+  getDay,
+  getYear,
+  parse,
+  getWeek,
+  startOfMonth,
+  endOfMonth,
+  getWeeksInMonth,
+  startOfWeek,
+  addDays,
+} from "date-fns";
 
 export default function Calendar() {
   const WEEK_DAYS = [
@@ -18,10 +29,27 @@ export default function Calendar() {
   const dayNumber = getDate(currentDate);
   const dayName = WEEK_DAYS[getDay(currentDate)];
 
+  const startWeek = getWeek(startOfMonth(currentDate));
+  const endWeek = getWeek(endOfMonth(currentDate));
+
+  const monthDays = [];
+
+  for (let i = startWeek; i <= endWeek; i++) {
+    const weekDays = [];
+    let startWeekDay = startOfWeek(
+      parse(`${i}`, "w", new Date(getYear(currentDate), 0, 1)),
+    );
+
+    for (let j = 0; j < 7; j++) {
+      weekDays.push(getDate(addDays(startWeekDay, j)));
+    }
+    monthDays.push(weekDays);
+  }
+
   return (
     <article className={styles.calendar}>
       <CurrentDate dayNumber={dayNumber} dayName={dayName} />
-      <Month />
+      <Month monthDays={monthDays} />
     </article>
   );
 }
