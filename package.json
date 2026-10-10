@@ -35,5 +35,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "date-fns": "^4.4.0",
+    "prop-types": "^15.8.1"
   }
 }
