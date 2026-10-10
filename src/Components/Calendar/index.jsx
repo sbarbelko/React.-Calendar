@@ -25,6 +25,8 @@ export default function Calendar() {
     "Saturday",
   ];
 
+  const WEEK_DAYS_SHORT = ["S", "M", "T", "W", "T", "F", "S"];
+
   const currentDate = new Date();
   const dayNumber = getDate(currentDate);
   const dayName = WEEK_DAYS[getDay(currentDate)];
@@ -49,7 +51,7 @@ export default function Calendar() {
   return (
     <article className={styles.calendar}>
       <CurrentDate dayNumber={dayNumber} dayName={dayName} />
-      <Month monthDays={monthDays} />
+      <Month monthDays={monthDays} WEEK_DAYS_SHORT={WEEK_DAYS_SHORT} />
     </article>
   );
 }
