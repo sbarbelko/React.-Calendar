@@ -9,9 +9,10 @@ import {
   getWeek,
   startOfMonth,
   endOfMonth,
-  getWeeksInMonth,
+  getMonth,
   startOfWeek,
   addDays,
+  format,
 } from "date-fns";
 
 export default function Calendar() {
@@ -34,6 +35,9 @@ export default function Calendar() {
   const startWeek = getWeek(startOfMonth(currentDate));
   const endWeek = getWeek(endOfMonth(currentDate));
 
+  const currentMonth = format(currentDate, "MMMM");
+  const currentYear = getYear(currentDate);
+
   const monthDays = [];
 
   for (let i = startWeek; i <= endWeek; i++) {
@@ -51,7 +55,12 @@ export default function Calendar() {
   return (
     <article className={styles.calendar}>
       <CurrentDate dayNumber={dayNumber} dayName={dayName} />
-      <Month monthDays={monthDays} WEEK_DAYS_SHORT={WEEK_DAYS_SHORT} />
+      <Month
+        monthDays={monthDays}
+        WEEK_DAYS_SHORT={WEEK_DAYS_SHORT}
+        currentMonth={currentMonth}
+        currentYear={currentYear}
+      />
     </article>
   );
 }
