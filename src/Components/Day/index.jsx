@@ -9,7 +9,7 @@ export default function Day(props) {
   return (
     <tr>
       {days.map((day, i) =>
-        i === today ? (
+        day === today ? (
           <td key={i} className={`${styles.currentDay} ${styles.averageDay}`}>
             {day}
           </td>
