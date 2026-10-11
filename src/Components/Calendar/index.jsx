@@ -3,7 +3,6 @@ import Month from "../Month";
 import styles from "./Calendar.module.sass";
 import {
   getDate,
-  getDay,
   getYear,
   parse,
   getWeek,
@@ -15,21 +14,11 @@ import {
 } from "date-fns";
 
 export default function Calendar() {
-  const WEEK_DAYS = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-
   const WEEK_DAYS_SHORT = ["S", "M", "T", "W", "T", "F", "S"];
 
   const currentDate = new Date();
   const dayNumber = getDate(currentDate);
-  const dayName = WEEK_DAYS[getDay(currentDate)];
+  const dayName = format(currentDate, "EEEE");
 
   const startWeek = getWeek(startOfMonth(currentDate));
   const endWeek = getWeek(endOfMonth(currentDate));

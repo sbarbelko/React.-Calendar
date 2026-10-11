@@ -7,8 +7,8 @@ export default function Week(props) {
 
   return (
     <tbody className={styles.daysContainer}>
-      {monthDays.map((i) => (
-        <Day days={i} />
+      {monthDays.map((day, i) => (
+        <Day key={i} days={day} />
       ))}
     </tbody>
   );

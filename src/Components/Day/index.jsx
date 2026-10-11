@@ -8,11 +8,15 @@ export default function Day(props) {
 
   return (
     <tr>
-      {days.map((i) =>
+      {days.map((day, i) =>
         i === today ? (
-          <td className={`${styles.currentDay} ${styles.averageDay}`}>{i}</td>
+          <td key={i} className={`${styles.currentDay} ${styles.averageDay}`}>
+            {day}
+          </td>
         ) : (
-          <td className={styles.averageDay}>{i}</td>
+          <td key={i} className={styles.averageDay}>
+            {day}
+          </td>
         ),
       )}
     </tr>
